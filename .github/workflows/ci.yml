@@ -70,8 +70,8 @@ jobs:
         if: startsWith(matrix.target.id, 'android-armv7')
         shell: bash
         run: |
-          sudo apt install gcc make gcc-arm-none-eabi binutils-arm-none-eabi gcc-multilib g++-multilib
-          sudo apt-get install ninja-build clang libglib2.0-dev -y
+          sudo apt-get update
+          sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi gcc-multilib g++-multilib -y
 
       - name: Install dependencies on Ubuntu (arm64)
         if: startsWith(matrix.target.id, 'linux-arm64')
