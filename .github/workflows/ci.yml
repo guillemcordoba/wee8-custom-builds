@@ -26,9 +26,9 @@ jobs:
           - id: 'darwin-aarch64'
             os: 'macos-14'
             native: true
-            - id: 'ios'
-              os: 'macos-14'
-              native: false             # Not used in the `Build` job, but here for reference
+          - id: 'ios'
+            os: 'macos-14'
+            native: false             # Not used in the `Build` job, but here for reference
           - id: 'android'
             os: 'ubuntu-22.04'
             native: false             # Not used in the `Build` job, but here for reference
@@ -282,6 +282,16 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: artifacts/android-armv7/wee8.tar.xz
           asset_name: wee8-android-armv7.tar.xz
+          asset_content_type: application/gzip
+
+      - name: Upload Release Asset Android
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: artifacts/ios/wee8.tar.xz
+          asset_name: wee8-ios.tar.xz
           asset_content_type: application/gzip
 
       # - name: Upload Release Asset Windows
