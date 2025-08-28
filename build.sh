@@ -98,6 +98,8 @@ gn gen out/release --args="is_debug=false \
   target_os=\"$OS\" \
   target_environment=\"device\" \
   "
+  # Showtime!
+  ninja -C out/release v8
 else 
 gn gen out/release --args="is_debug=false \
   v8_symbol_level=0 \
@@ -122,8 +124,8 @@ gn gen out/release --args="is_debug=false \
   v8_target_cpu=\"$ARCH\" \
   target_os=\"$OS\" \
   "
+  # Showtime!
+  ninja -C out/release wee8
 fi
-# Showtime!
-ninja -C out/release wee8
 
 ls -laR out/release/obj
